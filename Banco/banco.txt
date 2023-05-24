@@ -1,0 +1,11 @@
+base crud_clientes
+
+usuarios
+id_usuario - int - auto imcriment - not null
+nome_usuario - varchar 150 - not null
+senha - varchar (20) - not null
+
+clientes
+id_clientes - int - auto imcriment - not null
+nome_cliente - varchar 150 - not null
+id_usario - fk - 

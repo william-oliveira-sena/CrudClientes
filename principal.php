@@ -18,7 +18,7 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):?>
         <nav>
             <ul id="navbar">
                 <li><a href="principal.php" class="nav-link">Home </a></li>
-                <li><a href="#" class="nav-link">Clientes </a></li>
+                <li><a href="clientes.php" class="nav-link">Clientes </a></li>
                 <li><a href="logout.php" class="nav-link">Sair </a></li>
               
             </ul>

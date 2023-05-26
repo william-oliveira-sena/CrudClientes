@@ -46,6 +46,27 @@ class Usuario{
 
         return $array;
     }
+
+
+    public function pesquisaclientes($usuario){
+        global $conn;
+
+        $query = "SELECT * FROM clientes WHERE usuario = :usuario";
+
+        $query= $conn->prepare($query);
+        $query->bindValue("usuario", $usuario);
+        $query->execute();
+
+            if($query->rowCount() > 0){
+                $dado = $query->fetchAll();
+
+                return true;
+            }else{
+                return false;
+            }
+
+                        
+    }
 }
 
 ?>

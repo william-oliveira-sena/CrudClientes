@@ -25,8 +25,27 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):?>
             </ul>
         </nav>
     </header>
+        <div class="cadastro">
+            <h1>Novo Usuário</h1>
+             <form action="novoCliente.php" method="POST"> 
+                    <div class="mb-3">
+                        <label>Nome</lavel>
+                        <input type="text" name="nome" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Idade</lavel>
+                        <input type="text" name="idade" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Cidade</lavel>
+                        <input type="text" name="cidade" class="form-control">
+                    </div>
+                     <div class="mb-3">
+                          <input type="submit" class="btn btn-dark" value="Cadastrar">
+                     </div>
 
-   
+            </form>
+        </div>
     
 </body>
 </html>

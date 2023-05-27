@@ -55,17 +55,18 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php foreach($lista as $usuario): if($usuario['id_usuario'] == $_SESSION['id_usuario']){$nomeUser = $usuario['nome_usuario'];}?>
+                        <?php foreach($lista as $usuario): if($usuario['id_usuario'] == $_SESSION['id_usuario']){$nomeUser = $usuario['nome_usuario'];}
+                        ?>
                            <tr>
-                                <td scope="row" class="col-id"><?= $usuario['id_cliente'] ?></td>;
-                                <td scope="row"><?= $usuario['nome_cliente'] ?></td>
-                                <td scope="row"><?= $usuario['idade'] ?></td>
-                                <td scope="row"><?= $usuario['cidade'] ?></td>
-                                <td scope="row"><?= $nomeUser ?></td>
+                                <td scope="row" class="col-id"><?= $usuario['id_cliente']; ?></td>
+                                <td scope="row"><?= $usuario['nome_cliente']; ?></td>
+                                <td scope="row"><?= $usuario['idade']; ?></td>
+                                <td scope="row"><?= $usuario['cidade']; ?></td>
+                                <td scope="row"><?= $usuario['id_usuario']; ?></td>
                                 <td class="actions">
-                                    <a href="<?= $BASE_URL ?>show.php?id=<?= $contact['id'] ?>"><i class="fas fa-eye check-icon"></i></a>
-                                    <a href="a"><i class="far fa-edit edit-icon"></i></a>
-                                    <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i> </button>
+                                <a href="editar.php?id=<?= $usuario['id_cliente']; ?>"><img src="IMG/create-outline.svg" class="edit-btn"></img></a>
+                            <a href="deletar.php?id=<?= $usuario['id_cliente'] ?>"><img src="IMG/close-circle-outline.svg" class="delete-btn"></img></a>
+                          
                                 </td> 
                               </tr> 
                         <?php endforeach; ?>
@@ -74,7 +75,9 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
             
          
     
-    <!--<?= $dado["nome_usuario"] ?>
+    <!--
+         <button type="submit" class="delete-btn"></button>
+         <?= $dado["nome_usuario"] ?>
     <?= $contact["phone"] ?>
     <?= $contact["observations"] ?>
 

@@ -44,3 +44,29 @@
 .cadastro{
     padding-left: 550px;
 }
+.editar{
+    padding-left: 550px;
+}
+
+.edit-btn{
+   
+    width: 35px;
+}
+
+.delete-btn{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color:#bd2130;
+    width: 35px;
+}
+
+.actions{
+    text-align: right;
+    width: 100px;
+}
+.actions i{
+    font-size: 18px;
+    margin-right: 5px;
+}
+

@@ -1,5 +1,6 @@
 <?php
     require 'connection.php';
+    require 'usuarioClass.php';
 
     $id = filter_input(INPUT_GET,'id');
     $usuario = [];
@@ -70,3 +71,4 @@
 
     </body>
 </html>
+

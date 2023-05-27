@@ -43,6 +43,8 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
     </header>
 
         <div class="container">
+
+        <h1 id="main-title">Clientes Cadastrados</h1>
         
             <table class="table" id="contacts-table">
                         <thead>

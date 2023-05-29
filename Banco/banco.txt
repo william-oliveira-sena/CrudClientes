@@ -8,4 +8,4 @@ senha - varchar (20) - not null
 clientes
 id_clientes - int - auto imcriment - not null
 nome_cliente - varchar 150 - not null
-id_usario - fk - 
+id_usario - int - fk - usuarios - id_usuario

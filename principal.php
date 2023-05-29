@@ -6,17 +6,18 @@ require 'usuarioClass.php';
 if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
 
    $lista = []; 
-   $nomeUser = [];
-   //$id_usuario = $_SESSION['id_usuario'];
+  
+   $id_usuario = $_SESSION['id_usuario'];
 
-   $sql= $conn->query("SELECT cli.*, u.nome_usuario, u.id_usuario FROM clientes as cli INNER JOIN usuarios as u WHERE u.id_usuario = cli.id_usuario;");
+   $sql= $conn->prepare("SELECT cli.*, u.nome_usuario, u.id_usuario FROM clientes AS cli INNER JOIN usuarios AS u WHERE u.id_usuario = :id_usuario AND cli.id_usuario = :id_usuario;");
+   $sql->bindValue(':id_usuario',$id_usuario);
+   $sql->execute();
 
    if($sql->rowCount() > 0){
-    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $lista = $sql->fetchALL(PDO::FETCH_ASSOC);
+    extract($lista);
    }
 
-   //if($lista['id_usuario'] == $_SESSION['id_usuario']){
-    //$nomeUser = $lista['nome_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
     <link rel="icon" type="image/png" href="IMG/iconlapis.png"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-</head>
+    </head>
 <body>
     <header class="topo-sistema">
         <nav>
@@ -57,48 +58,22 @@ if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php foreach($lista as $usuario): if($usuario['id_usuario'] == $_SESSION['id_usuario']){$nomeUser = $usuario['nome_usuario'];}
-                        ?>
-                           <tr>
-                                <td scope="row" class="col-id"><?= $usuario['id_cliente']; ?></td>
+                        <?php foreach($lista as $usuario): ?>                                                  
+                                                      
+                            <tr>
+                                <td scope="row" class="col-id"><?= $usuario['id_cliente'];?></td>
                                 <td scope="row"><?= $usuario['nome_cliente']; ?></td>
-                                <td scope="row"><?= $usuario['idade']; ?></td>
-                                <td scope="row"><?= $usuario['cidade']; ?></td>
-                                <td scope="row"><?= $usuario['id_usuario']; ?></td>
+                                <td scope="row"><?= $usuario['idade'];?></td>
+                                <td scope="row"><?= $usuario['cidade'];?> </td>
+                                <td scope="row"><?= $usuario ['nome_usuario'];?></td>
                                 <td class="actions">
-                                <a href="editar.php?id=<?= $usuario['id_cliente']; ?>"><img src="IMG/create-outline.svg" class="edit-btn"></img></a>
-                            <a href="deletar.php?id=<?= $usuario['id_cliente'] ?>"><img src="IMG/close-circle-outline.svg" class="delete-btn"></img></a>
-                          
-                                </td> 
-                              </tr> 
-                        <?php endforeach; ?>
+                                <a href="editar.php?id=<?=$usuario['id_cliente']; ?>"><img src="IMG/create-outline.svg" class="edit-btn"></img></a>
+                                <a href="deletar.php?id=<?=$usuario['id_cliente']; ?>"><img src="IMG/close-circle-outline.svg" class="delete-btn"></img></a>   </td>              
+                            
+                            </tr>                                               
+                        <?php endforeach; ?>                        
             </table>
-        </div>            
-            
-         
-    
-    <!--
-         <button type="submit" class="delete-btn"></button>
-         <?= $dado["nome_usuario"] ?>
-    <?= $contact["phone"] ?>
-    <?= $contact["observations"] ?>
-
-    select trazendo nome do usuario SELECT cli.*, u.nome_usuario FROM clientes as cli INNER JOIN usuarios as u WHERE cli.id_usuario = u.id_usuario;
-
-
-    <tbody>
-    
-                    
-                
-                </tbody>
-
-
-
-    -->
-    
-
-
-
+        </div>     
 </body>
 </html>
 

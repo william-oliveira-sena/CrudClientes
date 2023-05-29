@@ -24,9 +24,7 @@ class Usuario{
                 return true;
             }else{
                 return false;
-            }
-
-                        
+            }                        
     }
 
     public function logged($id){
@@ -46,9 +44,7 @@ class Usuario{
 
         return $array;
     }
-
-
-
+   
 }
 
 ?>

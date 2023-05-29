@@ -1,6 +1,7 @@
 <?php
     require 'connection.php';
     require 'usuarioClass.php';
+    
 
     $id = filter_input(INPUT_POST,'id');
     $nome = filter_input(INPUT_POST,'nome');    

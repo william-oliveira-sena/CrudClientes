@@ -45,8 +45,9 @@
                     </ul>
                 </nav>
             </header>
+            <h1>Editar Usuário</h1>
         <div class="editar">
-                    <h1>Editar Usuário</h1>
+                    
                     <form action="editar_action.php" method="POST"> 
                             <div class="mb-3">
                             <input type="hidden" name="id" value="<?= $usuario['id_cliente'];?>">

@@ -6,14 +6,13 @@
 
             require "connection.php";
             require "usuarioClass.php";
-
+              //cria o objeto
             $user = new Usuario();
 
              $usuario = $_POST['usuario'];
-             $senha = $_POST['senha'];
-
-             $user->login($usuario,$senha);
-            
+             $senha = md5($_POST['senha']);
+              //adiciona os valores ao novo objeto
+             $user->login($usuario,$senha);            
             
             
              if($user->login($usuario,$senha) == true){

@@ -5,18 +5,11 @@ require 'usuarioClass.php';
 
 if(isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])):
 
-   $lista = []; 
-  
+   $lista = [];  
    $id_usuario = $_SESSION['id_usuario'];
 
-   $sql= $conn->prepare("SELECT cli.*, u.nome_usuario, u.id_usuario FROM clientes AS cli INNER JOIN usuarios AS u WHERE u.id_usuario = :id_usuario AND cli.id_usuario = :id_usuario;");
-   $sql->bindValue(':id_usuario',$id_usuario);
-   $sql->execute();
-
-   if($sql->rowCount() > 0){
-    $lista = $sql->fetchALL(PDO::FETCH_ASSOC);
-    extract($lista);
-   }
+   $user = new Usuario();
+   $lista = $user->pesquisar($id_usuario);
 
 ?>
 

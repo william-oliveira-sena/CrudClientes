@@ -6,9 +6,8 @@ require 'usuarioClass.php';
 $id = filter_input(INPUT_GET, 'id');
 
     if($id){
-        $sql= $conn->prepare("DELETE FROM clientes WHERE id_cliente = :id");
-        $sql->bindValue(':id',$id);
-        $sql->execute();
+       $user = new Usuario();
+       $user->deletar($id);
     }
 
     header("Location: principal.php");

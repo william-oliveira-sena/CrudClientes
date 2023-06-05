@@ -10,13 +10,8 @@
     $id_user = filter_input(INPUT_POST,'id_user');
 
     if($id && $nome && $idade && $cidade && $id_user){
-        $sql = $conn->prepare("UPDATE clientes SET id_cliente = :id, nome_cliente = :nome, cidade = :cidade, idade = :idade, id_usuario = :id_user WHERE id_cliente = :id");
-        $sql->bindValue(':id',$id);
-        $sql->bindValue(':nome',$nome);
-        $sql->bindValue(':cidade',$cidade);
-        $sql->bindValue(':idade',$idade);
-        $sql->bindValue(':id_user',$id_user);
-        $sql->execute();
+        $user = new Usuario();
+        $user->editar($id,$nome,$cidade,$idade,$id_user);
    
 
     header("Location: principal.php");
